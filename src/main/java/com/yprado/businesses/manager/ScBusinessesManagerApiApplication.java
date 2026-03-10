@@ -1,4 +1,4 @@
-package com.yprado.sc_businesses_manager_api;
+package com.yprado.businesses.manager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
