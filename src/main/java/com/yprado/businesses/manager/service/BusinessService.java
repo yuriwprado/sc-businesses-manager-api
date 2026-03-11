@@ -29,14 +29,10 @@ public class BusinessService {
         return businessMapper.toBusinessDTO(business);
     }
 
-    private Business findOrThrow(String id) {
-        return businessRepository.findById(id)
-                .orElseThrow(getBusinessNotFoundRuntimeExceptionSupplier(id));
-    }
-
     public void update(BusinessUpdateDTO businessUpdateDTO) {
-        Business businessToBeUpdated = businessMapper.toBusiness(businessUpdateDTO);
-        businessRepository.save(businessToBeUpdated);
+        Business existingBusiness = findOrThrow(businessUpdateDTO.id());
+        businessMapper.updateBusinessFromDTO(businessUpdateDTO, existingBusiness);
+        businessRepository.save(existingBusiness);
     }
 
     public void changeStatus(String id, BusinessStatus status) {
@@ -61,6 +57,11 @@ public class BusinessService {
     public BusinessService(BusinessRepository businessRepository, BusinessMapper businessMapper) {
         this.businessRepository = businessRepository;
         this.businessMapper = businessMapper;
+    }
+
+    private Business findOrThrow(String id) {
+        return businessRepository.findById(id)
+                .orElseThrow(getBusinessNotFoundRuntimeExceptionSupplier(id));
     }
 
     private static Supplier<RuntimeException> getBusinessNotFoundRuntimeExceptionSupplier(String id) {

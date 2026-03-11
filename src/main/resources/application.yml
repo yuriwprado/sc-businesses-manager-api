@@ -1,13 +1,11 @@
 spring:
   application:
     name: sc-businesses-manager-api
-
   datasource:
     url: jdbc:postgresql://localhost:5432/scbusiness
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
@@ -17,14 +15,10 @@ spring:
       hibernate:
         format_sql: true
 
-  flyway:
-    enabled: true
-
 server:
-  port: ${SERVER_PORT:8080}
+  port: 8080
 
 logging:
   level:
     com.scbusinesses: INFO
     org.springframework.web: WARN
-    org.flywaydb: DEBUG
