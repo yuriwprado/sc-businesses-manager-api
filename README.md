@@ -170,4 +170,4 @@ This project follows a **Layered Architecture** pattern:
 ---
 
 ### Youtube project introduction video
-https://www.youtube.com/watch?v=Zzj8n9sXo5I
+https://www.youtube.com/watch?v=8Uomv5ZFrE0
